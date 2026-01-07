@@ -1,2 +1,346 @@
-<!-- refresh mer. 30 juil. 2025 21:27:21 GMT -->
-<!-- refresh mer. 30 juil. 2025 21:29:30 GMT -->
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ColiExpress - Livraison de colis avec les compagnies partenaires</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        --ink: #101828;
+        --muted: #475467;
+        --brand: #2e5aac;
+        --brand-dark: #1f3f77;
+        --surface: #f8fafc;
+        --card: #ffffff;
+        --accent: #f79009;
+        --border: #e4e7ec;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--surface);
+        color: var(--ink);
+      }
+      header {
+        background: linear-gradient(120deg, #2e5aac 0%, #375fe0 55%, #57a7ff 100%);
+        color: #fff;
+        padding: 32px 6vw 64px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .logo {
+        font-weight: 700;
+        font-size: 1.2rem;
+        letter-spacing: 0.2px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        font-size: 0.95rem;
+      }
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.9;
+      }
+      .hero {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        margin: 0 0 16px;
+      }
+      .hero p {
+        margin: 0 0 24px;
+        color: #f4f6ff;
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        border: none;
+        border-radius: 999px;
+        padding: 12px 22px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn.primary {
+        background: #fff;
+        color: var(--brand-dark);
+      }
+      .btn.secondary {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .panel {
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 16px 40px rgba(16, 24, 40, 0.18);
+        color: var(--ink);
+      }
+      main {
+        padding: 48px 6vw 80px;
+      }
+      section {
+        margin-bottom: 48px;
+      }
+      .section-title {
+        margin: 0 0 12px;
+        font-size: 1.6rem;
+      }
+      .section-subtitle {
+        color: var(--muted);
+        margin: 0 0 24px;
+      }
+      .grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .card {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 20px;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 12px rgba(16, 24, 40, 0.06);
+      }
+      .card h3 {
+        margin: 0 0 8px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        background: #fef0c7;
+        color: #b54708;
+      }
+      .tracking {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .tracking input,
+      .tracking select {
+        flex: 1 1 180px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .tracking button {
+        background: var(--brand);
+        color: #fff;
+      }
+      .steps {
+        display: grid;
+        gap: 16px;
+      }
+      .step {
+        display: flex;
+        gap: 12px;
+        align-items: start;
+      }
+      .step span {
+        background: var(--brand);
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+      footer {
+        padding: 32px 6vw;
+        background: #101828;
+        color: #d0d5dd;
+      }
+      footer a {
+        color: #d0d5dd;
+        text-decoration: none;
+      }
+      @media (max-width: 720px) {
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav-links {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="logo">ColiExpress</div>
+        <nav class="nav-links">
+          <a href="#compagnies">Compagnies</a>
+          <a href="#suivi">Suivi</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="hero">
+        <div>
+          <h1>Une appli de livraison de colis connectée à vos compagnies préférées.</h1>
+          <p>
+            Comparez, réservez et suivez vos envois en un seul endroit. ColiExpress
+            connecte les transporteurs nationaux et internationaux pour livrer vos colis
+            plus vite et au meilleur prix.
+          </p>
+          <div class="cta">
+            <button class="btn primary">Créer un envoi</button>
+            <button class="btn secondary">Voir les tarifs</button>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Tableau de bord express</h2>
+          <p>Suivi en direct, alertes SMS et assistance 24/7 pour chaque colis.</p>
+          <div class="grid">
+            <div class="card">
+              <p class="pill">Livraison aujourd'hui</p>
+              <h3>+18%</h3>
+              <p>Gain moyen sur les délais de livraison.</p>
+            </div>
+            <div class="card">
+              <p class="pill">Assurance incluse</p>
+              <h3>Jusqu'à 10 000 €</h3>
+              <p>Protection automatique pour vos envois.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="compagnies">
+        <h2 class="section-title">Compagnies partenaires</h2>
+        <p class="section-subtitle">Choisissez la meilleure option selon votre destination, budget et urgence.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>RapidAir Cargo</h3>
+            <p>Livraison internationale express avec suivi en temps réel.</p>
+          </div>
+          <div class="card">
+            <h3>TerraLog</h3>
+            <p>Réseau routier premium pour livraisons régionales en 24h.</p>
+          </div>
+          <div class="card">
+            <h3>BlueSea Freight</h3>
+            <p>Transport maritime économique pour gros volumes.</p>
+          </div>
+          <div class="card">
+            <h3>CityBike Express</h3>
+            <p>Dernier kilomètre zéro émission dans les centres urbains.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="suivi">
+        <h2 class="section-title">Suivi de colis instantané</h2>
+        <p class="section-subtitle">Renseignez votre numéro et la compagnie pour suivre vos colis partout.</p>
+        <div class="panel">
+          <div class="tracking">
+            <input type="text" placeholder="Numéro de colis" aria-label="Numéro de colis" />
+            <select aria-label="Compagnie de livraison">
+              <option>RapidAir Cargo</option>
+              <option>TerraLog</option>
+              <option>BlueSea Freight</option>
+              <option>CityBike Express</option>
+            </select>
+            <button class="btn">Suivre mon colis</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <h2 class="section-title">Services clés</h2>
+        <p class="section-subtitle">Optimisez chaque expédition avec des outils pensés pour votre activité.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Calculateur de tarifs</h3>
+            <p>Simulez immédiatement le coût en fonction du poids, du volume et de l'urgence.</p>
+          </div>
+          <div class="card">
+            <h3>Notifications intelligentes</h3>
+            <p>Alertes SMS et email pour les étapes clés de la livraison.</p>
+          </div>
+          <div class="card">
+            <h3>Gestion des retours</h3>
+            <p>Planifiez des retours simplifiés avec étiquettes prêtes à imprimer.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Comment ça marche</h2>
+        <p class="section-subtitle">Trois étapes simples pour expédier vos colis.</p>
+        <div class="steps">
+          <div class="card step">
+            <span>1</span>
+            <div>
+              <h3>Créez votre envoi</h3>
+              <p>Ajoutez les informations de collecte et de livraison en quelques minutes.</p>
+            </div>
+          </div>
+          <div class="card step">
+            <span>2</span>
+            <div>
+              <h3>Comparez les compagnies</h3>
+              <p>Visualisez les délais, tarifs et avis pour choisir la meilleure offre.</p>
+            </div>
+          </div>
+          <div class="card step">
+            <span>3</span>
+            <div>
+              <h3>Suivez en temps réel</h3>
+              <p>Recevez des notifications automatiques jusqu'à la signature finale.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="grid">
+        <div>
+          <h3>ColiExpress</h3>
+          <p>Plateforme multi-compagnies pour la livraison de colis en Afrique et à l'international.</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>support@coliexpress.app</p>
+          <p>+221 77 000 00 00</p>
+        </div>
+        <div>
+          <h4>Ressources</h4>
+          <p><a href="#">Centre d'aide</a></p>
+          <p><a href="#">Statut des compagnies</a></p>
+          <p><a href="#">Conditions</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
