@@ -3,106 +3,142 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ColiExpress - Livraison de colis avec les compagnies partenaires</title>
+    <title>NeoBet Pulse — Paris sportif futuriste</title>
     <style>
       :root {
-        color-scheme: light;
-        font-family: "Inter", system-ui, -apple-system, sans-serif;
-        --ink: #101828;
-        --muted: #475467;
-        --brand: #2e5aac;
-        --brand-dark: #1f3f77;
-        --surface: #f8fafc;
-        --card: #ffffff;
-        --accent: #f79009;
-        --border: #e4e7ec;
+        color-scheme: dark;
+        font-family: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+        --bg: #070b16;
+        --surface: #0f172a;
+        --surface-soft: rgba(15, 23, 42, 0.78);
+        --card: #111c34;
+        --ink: #f8fafc;
+        --muted: #94a3b8;
+        --primary: #36f5ff;
+        --secondary: #8b5cf6;
+        --accent: #f97316;
+        --success: #22c55e;
+        --border: rgba(148, 163, 184, 0.24);
+        --glow: 0 0 30px rgba(54, 245, 255, 0.25);
       }
       * {
         box-sizing: border-box;
       }
       body {
         margin: 0;
-        background: var(--surface);
+        background: radial-gradient(circle at top, rgba(54, 245, 255, 0.15), transparent 45%),
+          radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.18), transparent 35%),
+          var(--bg);
         color: var(--ink);
       }
       header {
-        background: linear-gradient(120deg, #2e5aac 0%, #375fe0 55%, #57a7ff 100%);
-        color: #fff;
-        padding: 32px 6vw 64px;
+        padding: 32px 6vw 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(54, 245, 255, 0.15), transparent 40%, rgba(139, 92, 246, 0.2));
+        pointer-events: none;
       }
       .nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 16px;
+        position: relative;
+        z-index: 1;
       }
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
         font-weight: 700;
-        font-size: 1.2rem;
         letter-spacing: 0.2px;
+      }
+      .logo span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: linear-gradient(140deg, var(--primary), var(--secondary));
+        color: #0f172a;
+        font-weight: 800;
+        box-shadow: var(--glow);
       }
       .nav-links {
         display: flex;
-        gap: 20px;
+        flex-wrap: wrap;
+        gap: 18px;
         font-size: 0.95rem;
       }
       .nav-links a {
-        color: #fff;
+        color: var(--ink);
         text-decoration: none;
-        opacity: 0.9;
+        opacity: 0.8;
       }
       .hero {
-        margin-top: 48px;
+        margin-top: 56px;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 32px;
         align-items: center;
+        position: relative;
+        z-index: 1;
       }
       .hero h1 {
-        font-size: clamp(2rem, 3vw, 3rem);
+        font-size: clamp(2.4rem, 3.6vw, 3.6rem);
         margin: 0 0 16px;
+        line-height: 1.08;
       }
       .hero p {
         margin: 0 0 24px;
-        color: #f4f6ff;
+        color: var(--muted);
       }
       .cta {
         display: flex;
-        gap: 12px;
         flex-wrap: wrap;
+        gap: 12px;
       }
       .btn {
-        border: none;
+        border: 1px solid transparent;
         border-radius: 999px;
         padding: 12px 22px;
         font-weight: 600;
         cursor: pointer;
-      }
-      .btn.primary {
-        background: #fff;
-        color: var(--brand-dark);
-      }
-      .btn.secondary {
-        background: rgba(255, 255, 255, 0.2);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-      }
-      .panel {
-        background: #fff;
-        border-radius: 20px;
-        padding: 20px;
-        box-shadow: 0 16px 40px rgba(16, 24, 40, 0.18);
+        background: transparent;
         color: var(--ink);
       }
+      .btn.primary {
+        background: linear-gradient(120deg, var(--primary), var(--secondary));
+        color: #0b1120;
+        box-shadow: var(--glow);
+      }
+      .btn.ghost {
+        border-color: var(--border);
+        background: rgba(15, 23, 42, 0.6);
+      }
+      .panel {
+        background: var(--surface-soft);
+        border-radius: 20px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        box-shadow: 0 18px 50px rgba(8, 15, 36, 0.6);
+        backdrop-filter: blur(10px);
+      }
       main {
-        padding: 48px 6vw 80px;
+        padding: 20px 6vw 90px;
       }
       section {
         margin-bottom: 48px;
       }
       .section-title {
-        margin: 0 0 12px;
-        font-size: 1.6rem;
+        margin: 0 0 10px;
+        font-size: 1.7rem;
       }
       .section-subtitle {
         color: var(--muted);
@@ -118,7 +154,7 @@
         border-radius: 16px;
         padding: 20px;
         border: 1px solid var(--border);
-        box-shadow: 0 4px 12px rgba(16, 24, 40, 0.06);
+        box-shadow: 0 10px 30px rgba(6, 11, 27, 0.5);
       }
       .card h3 {
         margin: 0 0 8px;
@@ -127,57 +163,111 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        padding: 6px 10px;
+        padding: 6px 12px;
         border-radius: 999px;
-        font-size: 0.78rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        background: #fef0c7;
-        color: #b54708;
+        background: rgba(54, 245, 255, 0.15);
+        color: var(--primary);
       }
-      .tracking {
+      .odds-grid {
+        display: grid;
+        gap: 14px;
+      }
+      .odds-row {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid var(--border);
+      }
+      .odds-row strong {
+        font-size: 1rem;
+      }
+      .odds {
+        display: flex;
+        gap: 10px;
+      }
+      .odds span {
+        padding: 6px 10px;
+        border-radius: 10px;
+        background: rgba(54, 245, 255, 0.1);
+        color: var(--primary);
+        font-weight: 600;
+      }
+      .status {
+        font-size: 0.75rem;
+        color: var(--success);
+        font-weight: 600;
+      }
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .stat {
+        flex: 1 1 140px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid var(--border);
+        padding: 16px;
+        border-radius: 14px;
+      }
+      .stat h4 {
+        margin: 0 0 6px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .stat p {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+      .tracker {
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
       }
-      .tracking input,
-      .tracking select {
+      .tracker input,
+      .tracker select {
         flex: 1 1 180px;
         padding: 12px 14px;
         border-radius: 12px;
         border: 1px solid var(--border);
-        font-size: 0.95rem;
+        background: rgba(7, 11, 22, 0.9);
+        color: var(--ink);
       }
-      .tracking button {
-        background: var(--brand);
-        color: #fff;
+      .tracker button {
+        background: linear-gradient(120deg, var(--secondary), var(--primary));
+        border: none;
+        color: #0b1120;
       }
-      .steps {
-        display: grid;
-        gap: 16px;
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
       }
-      .step {
-        display: flex;
-        gap: 12px;
-        align-items: start;
+      .table th,
+      .table td {
+        padding: 10px 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
       }
-      .step span {
-        background: var(--brand);
-        color: #fff;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
+      .table th {
+        color: var(--muted);
+        font-weight: 600;
       }
       footer {
         padding: 32px 6vw;
-        background: #101828;
-        color: #d0d5dd;
+        background: #04060f;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
       }
       footer a {
-        color: #d0d5dd;
+        color: var(--muted);
         text-decoration: none;
       }
       @media (max-width: 720px) {
@@ -185,8 +275,9 @@
           flex-direction: column;
           align-items: flex-start;
         }
-        .nav-links {
-          flex-wrap: wrap;
+        .odds-row {
+          grid-template-columns: 1fr;
+          justify-items: start;
         }
       }
     </style>
@@ -194,40 +285,72 @@
   <body>
     <header>
       <div class="nav">
-        <div class="logo">ColiExpress</div>
+        <div class="logo">
+          <span>NP</span>
+          NeoBet Pulse
+        </div>
         <nav class="nav-links">
-          <a href="#compagnies">Compagnies</a>
-          <a href="#suivi">Suivi</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
+          <a href="#live">Live</a>
+          <a href="#equipes">Équipes</a>
+          <a href="#joueurs">Joueurs</a>
+          <a href="#analytics">Analytics</a>
+          <a href="#support">Support</a>
         </nav>
       </div>
       <div class="hero">
         <div>
-          <h1>Une appli de livraison de colis connectée à vos compagnies préférées.</h1>
+          <p class="pill">Mode futuriste activé</p>
+          <h1>Votre hub de paris sportifs augmenté, inspiré par les datas et l'instantané.</h1>
           <p>
-            Comparez, réservez et suivez vos envois en un seul endroit. ColiExpress
-            connecte les transporteurs nationaux et internationaux pour livrer vos colis
-            plus vite et au meilleur prix.
+            NeoBet Pulse combine des cotes en temps réel, des fiches joueurs ultra détaillées,
+            et des projections IA pour suivre chaque match comme un analyste de haut niveau.
           </p>
           <div class="cta">
-            <button class="btn primary">Créer un envoi</button>
-            <button class="btn secondary">Voir les tarifs</button>
+            <button class="btn primary">Lancer un pari rapide</button>
+            <button class="btn ghost">Explorer les ligues</button>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <h4>Cotes rafraîchies</h4>
+              <p>toutes les 2s</p>
+            </div>
+            <div class="stat">
+              <h4>Ligues suivies</h4>
+              <p>120+</p>
+            </div>
+            <div class="stat">
+              <h4>Insights IA</h4>
+              <p>3.2M</p>
+            </div>
           </div>
         </div>
         <div class="panel">
-          <h2>Tableau de bord express</h2>
-          <p>Suivi en direct, alertes SMS et assistance 24/7 pour chaque colis.</p>
-          <div class="grid">
-            <div class="card">
-              <p class="pill">Livraison aujourd'hui</p>
-              <h3>+18%</h3>
-              <p>Gain moyen sur les délais de livraison.</p>
+          <h2>Tableau live synthétique</h2>
+          <p>Flux multi-sport, alertes smart et recommandations personnalisées.</p>
+          <div class="odds-grid">
+            <div class="odds-row">
+              <div>
+                <strong>Orion FC vs Atlas United</strong>
+                <div class="status">Live • 62'</div>
+              </div>
+              <div class="odds">
+                <span>1.72</span>
+                <span>3.40</span>
+                <span>4.10</span>
+              </div>
+              <button class="btn ghost">Parier</button>
             </div>
-            <div class="card">
-              <p class="pill">Assurance incluse</p>
-              <h3>Jusqu'à 10 000 €</h3>
-              <p>Protection automatique pour vos envois.</p>
+            <div class="odds-row">
+              <div>
+                <strong>Lumen Kings vs Nova City</strong>
+                <div class="status">Pré-match</div>
+              </div>
+              <div class="odds">
+                <span>2.05</span>
+                <span>3.10</span>
+                <span>3.65</span>
+              </div>
+              <button class="btn ghost">Parier</button>
             </div>
           </div>
         </div>
@@ -235,109 +358,144 @@
     </header>
 
     <main>
-      <section id="compagnies">
-        <h2 class="section-title">Compagnies partenaires</h2>
-        <p class="section-subtitle">Choisissez la meilleure option selon votre destination, budget et urgence.</p>
+      <section id="live">
+        <h2 class="section-title">Cotes live & marchés dynamiques</h2>
+        <p class="section-subtitle">Sélectionnez vos sports favoris et suivez chaque action en direct.</p>
         <div class="grid">
           <div class="card">
-            <h3>RapidAir Cargo</h3>
-            <p>Livraison internationale express avec suivi en temps réel.</p>
+            <h3>Flash Bets</h3>
+            <p>Pariez en une touche sur les actions clés, avec validation biométrique.</p>
           </div>
           <div class="card">
-            <h3>TerraLog</h3>
-            <p>Réseau routier premium pour livraisons régionales en 24h.</p>
+            <h3>Multi-view 3D</h3>
+            <p>Visualisez le terrain en réalité augmentée pour un ressenti immersif.</p>
           </div>
           <div class="card">
-            <h3>BlueSea Freight</h3>
-            <p>Transport maritime économique pour gros volumes.</p>
-          </div>
-          <div class="card">
-            <h3>CityBike Express</h3>
-            <p>Dernier kilomètre zéro émission dans les centres urbains.</p>
+            <h3>Boosts intelligents</h3>
+            <p>Recevez des boosters de cotes personnalisés selon vos habitudes.</p>
           </div>
         </div>
       </section>
 
-      <section id="suivi">
-        <h2 class="section-title">Suivi de colis instantané</h2>
-        <p class="section-subtitle">Renseignez votre numéro et la compagnie pour suivre vos colis partout.</p>
+      <section id="equipes">
+        <h2 class="section-title">Équipes & puissances actuelles</h2>
+        <p class="section-subtitle">Comparatif de forme, xG, endurance et dynamique tactique.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Orion FC</h3>
+            <p>Forme: 8V-1N-1D • Possession moyenne: 61%</p>
+            <p class="pill">Momentum +12%</p>
+          </div>
+          <div class="card">
+            <h3>Atlas United</h3>
+            <p>Forme: 6V-2N-2D • Tirs cadrés: 5.2/match</p>
+            <p class="pill">Pressing haut</p>
+          </div>
+          <div class="card">
+            <h3>Nova City</h3>
+            <p>Forme: 7V-0N-3D • Récupérations: 48/match</p>
+            <p class="pill">Transition rapide</p>
+          </div>
+          <div class="card">
+            <h3>Lumen Kings</h3>
+            <p>Forme: 5V-3N-2D • xG: 2.1/match</p>
+            <p class="pill">Attaque latérale</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="joueurs">
+        <h2 class="section-title">Joueurs stars & metrics avancés</h2>
+        <p class="section-subtitle">Score d'impact, vitesse moyenne, fatigue prédictive et KPI défensifs.</p>
         <div class="panel">
-          <div class="tracking">
-            <input type="text" placeholder="Numéro de colis" aria-label="Numéro de colis" />
-            <select aria-label="Compagnie de livraison">
-              <option>RapidAir Cargo</option>
-              <option>TerraLog</option>
-              <option>BlueSea Freight</option>
-              <option>CityBike Express</option>
-            </select>
-            <button class="btn">Suivre mon colis</button>
-          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Joueur</th>
+                <th>Équipe</th>
+                <th>Impact IA</th>
+                <th>Forme</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Kai Duran</td>
+                <td>Orion FC</td>
+                <td>92 / 100</td>
+                <td class="status">Très chaud</td>
+              </tr>
+              <tr>
+                <td>Salma Idris</td>
+                <td>Nova City</td>
+                <td>88 / 100</td>
+                <td class="status">En forme</td>
+              </tr>
+              <tr>
+                <td>Leo Maru</td>
+                <td>Atlas United</td>
+                <td>85 / 100</td>
+                <td class="status">Stable</td>
+              </tr>
+              <tr>
+                <td>Mira Solane</td>
+                <td>Lumen Kings</td>
+                <td>84 / 100</td>
+                <td class="status">À surveiller</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <section id="services">
-        <h2 class="section-title">Services clés</h2>
-        <p class="section-subtitle">Optimisez chaque expédition avec des outils pensés pour votre activité.</p>
+      <section id="analytics">
+        <h2 class="section-title">Performance & projections IA</h2>
+        <p class="section-subtitle">Analyse croisée des données physiques, tactiques et émotionnelles.</p>
         <div class="grid">
           <div class="card">
-            <h3>Calculateur de tarifs</h3>
-            <p>Simulez immédiatement le coût en fonction du poids, du volume et de l'urgence.</p>
+            <h3>Heatmap prédictive</h3>
+            <p>Anticipation des zones clés et des attaques probables.</p>
           </div>
           <div class="card">
-            <h3>Notifications intelligentes</h3>
-            <p>Alertes SMS et email pour les étapes clés de la livraison.</p>
+            <h3>Indice de pression</h3>
+            <p>Mesure en temps réel du pressing collectif et individuel.</p>
           </div>
           <div class="card">
-            <h3>Gestion des retours</h3>
-            <p>Planifiez des retours simplifiés avec étiquettes prêtes à imprimer.</p>
+            <h3>Score de confiance</h3>
+            <p>Lecture instantanée du moral et de la dynamique d'équipe.</p>
           </div>
         </div>
-      </section>
-
-      <section>
-        <h2 class="section-title">Comment ça marche</h2>
-        <p class="section-subtitle">Trois étapes simples pour expédier vos colis.</p>
-        <div class="steps">
-          <div class="card step">
-            <span>1</span>
-            <div>
-              <h3>Créez votre envoi</h3>
-              <p>Ajoutez les informations de collecte et de livraison en quelques minutes.</p>
-            </div>
-          </div>
-          <div class="card step">
-            <span>2</span>
-            <div>
-              <h3>Comparez les compagnies</h3>
-              <p>Visualisez les délais, tarifs et avis pour choisir la meilleure offre.</p>
-            </div>
-          </div>
-          <div class="card step">
-            <span>3</span>
-            <div>
-              <h3>Suivez en temps réel</h3>
-              <p>Recevez des notifications automatiques jusqu'à la signature finale.</p>
-            </div>
+        <div class="panel" style="margin-top: 20px;">
+          <h3>Tracker de pari personnalisé</h3>
+          <p>Enregistrez vos picks, suivez la variance et gérez votre bankroll.</p>
+          <div class="tracker">
+            <input type="text" placeholder="Match ou joueur" aria-label="Match ou joueur" />
+            <select aria-label="Marché">
+              <option>Victoire / Nul / Défaite</option>
+              <option>Over / Under</option>
+              <option>Both Teams Score</option>
+              <option>Performance joueur</option>
+            </select>
+            <button class="btn">Ajouter au tracker</button>
           </div>
         </div>
       </section>
     </main>
 
-    <footer id="contact">
+    <footer id="support">
       <div class="grid">
         <div>
-          <h3>ColiExpress</h3>
-          <p>Plateforme multi-compagnies pour la livraison de colis en Afrique et à l'international.</p>
+          <h3>NeoBet Pulse</h3>
+          <p>Plateforme de paris sportifs futuriste avec données biométriques et IA.</p>
         </div>
         <div>
-          <h4>Contact</h4>
-          <p>support@coliexpress.app</p>
-          <p>+221 77 000 00 00</p>
+          <h4>Support 24/7</h4>
+          <p>support@neobetpulse.app</p>
+          <p>+221 77 900 99 00</p>
         </div>
         <div>
           <h4>Ressources</h4>
           <p><a href="#">Centre d'aide</a></p>
-          <p><a href="#">Statut des compagnies</a></p>
+          <p><a href="#">Sécurité & KYC</a></p>
           <p><a href="#">Conditions</a></p>
         </div>
       </div>
